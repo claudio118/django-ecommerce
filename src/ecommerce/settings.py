@@ -54,7 +54,11 @@ INSTALLED_APPS = [
 
     # project internal apps
     'accounts',
+    'carts',
+    'orders',
     'products',
+    'search',
+    'tags',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'  # changes the built-in user model to ours
