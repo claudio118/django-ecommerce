@@ -54,6 +54,8 @@ INSTALLED_APPS = [
 
     # project internal apps
     'accounts',
+    'addresses',
+    'billing',
     'carts',
     'orders',
     'products',
