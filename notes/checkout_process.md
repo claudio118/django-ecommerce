@@ -13,9 +13,11 @@
         - User or Email (Guest Email)
         - generate payment processor token (Stripe or Braintree)
 
-
 3. Orders / Invoices Component
     - Connecting the Billing Profile
     - Shipping / Billing Address
     - Cart
     - Status -- Shipped? Cancelled?
+
+4. Backup Fixtures
+    python manage.py dumpdata products  --format json --indent 4 > products/fixtures/products.json

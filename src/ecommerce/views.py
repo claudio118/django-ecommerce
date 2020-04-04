@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, get_user_model
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 from .forms import ContactForm
@@ -9,8 +9,8 @@ def home_page(request):
     # print(request.session.get("first_name", "Unknown"))
     # request.session['first_name']
     context = {
-        "title": "Django eCommerce Mall. Comming soon...",
-        "content": " Welcome to My Shop.",
+        "title": "Hello World!",
+        "content": " Welcome to the homepage.",
 
     }
     if request.user.is_authenticated:
@@ -35,6 +35,14 @@ def contact_page(request):
     }
     if contact_form.is_valid():
         print(contact_form.cleaned_data)
+        if request.is_ajax():
+            return JsonResponse({"message": "Thank you for your submission"})
+
+    if contact_form.errors:
+        errors = contact_form.errors.as_json()
+        if request.is_ajax():
+            return HttpResponse(errors, status=400, content_type='application/json')
+
     # if request.method == "POST":
     #     #print(request.POST)
     #     print(request.POST.get('fullname'))
@@ -51,7 +59,6 @@ def home_page_old(request):
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
       </head>

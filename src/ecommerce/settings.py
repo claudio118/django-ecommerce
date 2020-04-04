@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     # project internal apps
     'accounts',
     'addresses',
+    'analytics',
     'billing',
     'carts',
     'orders',
@@ -70,6 +71,9 @@ LOGOUT_URL = '/logout/'
 
 FORCE_SESSION_TO_ONE = False
 FORCE_INACTIVE_USER_ENDSESSION = False
+
+STRIPE_SECRET_KEY = "sk_test_a9nujToOAsTsyvhbRmGGSuPR00rO6ijYaj"
+STRIPE_PUB_KEY = 'pk_test_8mhzt2uvVnZ9vq5qjDvUL0K200k39mo5HP'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -111,7 +115,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django-ecommerce',
         'USER': 'postgres',
-        'PASSWORD': '123456',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
